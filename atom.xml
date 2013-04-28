@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Test Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-28T18:04:22+00:00</updated>
+  <updated>2013-04-28T18:26:04+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -12,5 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Format Testing]]></title>
+    <link href="http://drolfe.github.io/drolfe/blog/2013/04/28/format-testing/"/>
+    <updated>2013-04-28T18:22:00+00:00</updated>
+    <id>http://drolfe.github.io/drolfe/blog/2013/04/28/format-testing</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@supermicro:~# nova list
+</span><span class='line'>+--------------------------------------+---------------+--------+----------------------------------------------------------------+
+</span><span class='line'>| ID                                   | Name          | Status | Networks                                                       |
+</span><span class='line'>+--------------------------------------+---------------+--------+----------------------------------------------------------------+
+</span><span class='line'>| 03ab114f-67a6-4a67-ba3f-144ed88cd08a | Octopess-blog | ACTIVE | <span class="nv">core</span><span class="o">=</span>11.11.11.4                                                |
+</span><span class='line'>| bb05b7f9-4b35-4bb6-b5dc-c03c4ce3900c | Open-VPN      | ACTIVE | <span class="nv">core</span><span class="o">=</span>11.11.11.3, 192.168.2.231; btfg-net-vlan30<span class="o">=</span>192.168.10.231 |
+</span><span class='line'>+--------------------------------------+---------------+--------+----------------------------------------------------------------+
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
 </feed>

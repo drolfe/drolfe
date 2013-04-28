@@ -1,15 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://drolfe.github.io/drolfe/blog/2013/04/28/format-testing/</loc>
+        <lastmod>2013-04-28T18:25:47+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://drolfe.github.io/drolfe/robots.txt</loc>
         <lastmod>2013-04-28T18:00:32+00:00</lastmod>
     </url>
     <url>
         <loc>http://drolfe.github.io/drolfe/</loc>
-        <lastmod>2013-04-28T18:00:32+00:00</lastmod>
+        <lastmod>2013-04-28T18:25:47+00:00</lastmod>
     </url>
     <url>
         <loc>http://drolfe.github.io/drolfe/blog/archives/</loc>
-        <lastmod>2013-04-28T18:00:32+00:00</lastmod>
+        <lastmod>2013-04-28T18:25:47+00:00</lastmod>
     </url>
 </urlset>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: testing | My Octopress Test Blog]]></title>
+  <link href="http://drolfe.github.io/drolfe/blog/categories/testing/atom.xml" rel="self"/>
+  <link href="http://drolfe.github.io/drolfe/"/>
+  <updated>2013-04-28T18:26:04+00:00</updated>
+  <id>http://drolfe.github.io/drolfe/</id>
+  <author>
+    <name><![CDATA[Daniel Rolfe]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Format Testing]]></title>
+    <link href="http://drolfe.github.io/drolfe/blog/2013/04/28/format-testing/"/>
+    <updated>2013-04-28T18:22:00+00:00</updated>
+    <id>http://drolfe.github.io/drolfe/blog/2013/04/28/format-testing</id>
+    <content type="html"><![CDATA[<p><code>bash
+root@supermicro:~# nova list
++--------------------------------------+---------------+--------+----------------------------------------------------------------+
+| ID                                   | Name          | Status | Networks                                                       |
++--------------------------------------+---------------+--------+----------------------------------------------------------------+
+| 03ab114f-67a6-4a67-ba3f-144ed88cd08a | Octopess-blog | ACTIVE | core=11.11.11.4                                                |
+| bb05b7f9-4b35-4bb6-b5dc-c03c4ce3900c | Open-VPN      | ACTIVE | core=11.11.11.3, 192.168.2.231; btfg-net-vlan30=192.168.10.231 |
++--------------------------------------+---------------+--------+----------------------------------------------------------------+
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>
