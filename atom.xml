@@ -4,7 +4,7 @@
   <title><![CDATA[Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T08:33:05+00:00</updated>
+  <updated>2013-04-29T08:37:17+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -245,7 +245,7 @@ Check we have a vlan network and a gre network</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>This is a [test]</p>
+<p>This is a <code>test</code></p>
 ]]></content>
   </entry>
   
