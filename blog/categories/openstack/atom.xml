@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenStack | Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T09:13:09+00:00</updated>
+  <updated>2013-04-29T09:17:57+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -18,8 +18,7 @@
     <link href="http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together/"/>
     <updated>2013-04-29T07:50:00+00:00</updated>
     <id>http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together</id>
-    <content type="html"><![CDATA[<p><img class="centre" src="/images/gre-vlan-ovs.png" title="Network topology" alt="network topology diagram">
-I've spent alot of time getting both gre and vlan tag support working at the same time.</p>
+    <content type="html"><![CDATA[<p><img class="centre" src="/images/gre-vlan-ovs.png" title="Network topology" alt="network topology diagram"></p>
 
 <p>Best of both worlds, <code>GRE</code> network with option for <code>VLAN</code> <code>Provider Networks</code></p>
 
