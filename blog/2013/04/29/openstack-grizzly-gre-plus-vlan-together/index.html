@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Octopress OpenStack Blog</title>
+  <title>OpenStack Grizzly Gre + Vlan together - Octopress OpenStack Blog</title>
   <meta name="author" content="Daniel Rolfe">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://drolfe.github.io/drolfe">
+  <link rel="canonical" href="http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together">
   <link href="/drolfe/favicon.png" rel="icon">
   <link href="/drolfe/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/drolfe/atom.xml" rel="alternate" title="Octopress OpenStack Blog" type="application/atom+xml">
@@ -64,15 +64,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together/">OpenStack Grizzly Gre + Vlan Together</a></h1>
+      <h1 class="entry-title">OpenStack Grizzly Gre + Vlan Together</h1>
     
     
       <p class="meta">
@@ -95,7 +92,7 @@
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve spent alot of time getting both gre and vlan tag support working at the same time. I think it would be worth adding to your grizzly howtos as I&#8217;ve don&#8217;t all my testing based off your install how-tos, anyways see below:</p>
+<div class="entry-content"><p>I&#8217;ve spent alot of time getting both gre and vlan tag support working at the same time. I think it would be worth adding to your grizzly howtos as I&#8217;ve don&#8217;t all my testing based off your install how-tos, anyways see below:</p>
 
 <p>Best of both worlds, GRE network with option for vlan tag</p>
 
@@ -298,22 +295,16 @@ Check we have a vlan network and a gre network</p>
 
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/drolfe/blog/2013/04/28/format-testing/">Format Testing</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Daniel Rolfe</span></span>
+
+      
 
 
 
@@ -325,42 +316,38 @@ Check we have a vlan network and a gre network</p>
   
 
 
-<time datetime="2013-04-28T18:22:00+00:00" pubdate data-updated="true">Apr 28<span>th</span>, 2013</time>
-        
-      </p>
+<time datetime="2013-04-29T07:50:00+00:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/drolfe/blog/categories/openstack/'>OpenStack</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together/" data-via="" data-counturl="http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together/" >Tweet</a>
+  
+  
+  
+</div>
 
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@supermicro:~# nova list
-</span><span class='line'>+--------------------------------------+---------------+--------+----------------------------------------------------------------+
-</span><span class='line'>| ID                                   | Name          | Status | Networks                                                       |
-</span><span class='line'>+--------------------------------------+---------------+--------+----------------------------------------------------------------+
-</span><span class='line'>| 03ab114f-67a6-4a67-ba3f-144ed88cd08a | Octopess-blog | ACTIVE | <span class="nv">core</span><span class="o">=</span>11.11.11.4                                                |
-</span><span class='line'>| bb05b7f9-4b35-4bb6-b5dc-c03c4ce3900c | Open-VPN      | ACTIVE | <span class="nv">core</span><span class="o">=</span>11.11.11.3, 192.168.2.231; btfg-net-vlan30<span class="o">=</span>192.168.10.231 |
-</span><span class='line'>+--------------------------------------+---------------+--------+----------------------------------------------------------------+
-</span></code></pre></td></tr></table></div></figure>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/drolfe/blog/2013/04/28/format-testing/" title="Previous Post: Format Testing">&laquo; Format Testing</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/drolfe/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -384,6 +371,7 @@ Check we have a vlan network and a gre network</p>
 
   
 </aside>
+
 
     </div>
   </div>

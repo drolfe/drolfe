@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: OpenStack | Octopress OpenStack Blog]]></title>
+  <link href="http://drolfe.github.io/drolfe/blog/categories/openstack/atom.xml" rel="self"/>
+  <link href="http://drolfe.github.io/drolfe/"/>
+  <updated>2013-04-29T08:14:17+00:00</updated>
+  <id>http://drolfe.github.io/drolfe/</id>
+  <author>
+    <name><![CDATA[Daniel Rolfe]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OpenStack Grizzly Gre + Vlan together]]></title>
+    <link href="http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together/"/>
+    <updated>2013-04-29T07:50:00+00:00</updated>
+    <id>http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together</id>
+    <content type="html"><![CDATA[<p>I've spent alot of time getting both gre and vlan tag support working at the same time. I think it would be worth adding to your grizzly howtos as I've don't all my testing based off your install how-tos, anyways see below:</p>
+
+<p>Best of both worlds, GRE network with option for vlan tag</p>
+
+<p>```bash
+root@supermicro:~# cat /etc/quantum/plugins/openvswitch/ovs_quantum_plugin.ini | grep -v #
+[DATABASE]</p>
+
+<p>sql_connection = mysql://quantumUser:quantumPass@192.168.10.118/quantum
+reconnect_interval = 2</p>
+
+<p>[OVS]</p>
+
+<p>tenant_network_type = gre
+network_vlan_ranges = physnet1:2:4094
+bridge_mappings = physnet1:br-eth3
+enable_tunneling = True
+tunnel_id_ranges = 1:1000
+tunnel_bridge = br-tun
+local_ip = 192.168.10.118</p>
+
+<p>[AGENT]
+polling_interval = 2</p>
+
+<p>[SECURITYGROUP]
+<code>
+now create the vlan provider network as admin and assign to tenant
+</code>bash
+root@supermicro:~# quantum net-create --tenant-id 19f73304c78e4fdd8787dd6b4b4fe263 blade-net-vlan30 --provider:network_type vlan --provider:physical_network physnet1 --provider:segmentation_id 30 --shared
+Created a new network:
++---------------------------+--------------------------------------+
+| Field | Value |
++---------------------------+--------------------------------------+
+| admin_state_up | True |
+| id | d78187b9-a38e-42a9-86c7-5975119d3332 |
+| name | blade-net-vlan30 |
+| provider:network_type | vlan |
+| provider:physical_network | physnet1 |
+| provider:segmentation_id | 30 |
+| router:external | False |
+| shared | True |
+| status | ACTIVE |
+| subnets | |
+| tenant_id | 19f73304c78e4fdd8787dd6b4b4fe263 |
++---------------------------+--------------------------------------+
+<code>`
+Check we have a vlan network and a gre network
+</code>bash
+root@supermicro:~# quantum
+(quantum)
+(quantum)
+(quantum) net-list
++--------------------------------------+-----------------+-------------------------------------------------------+
+| id | name | subnets |
++--------------------------------------+-----------------+-------------------------------------------------------+
+| 7329681a-32e4-4676-8ced-a63a910aa81b | btfg-net-vlan30 | c1331e79-8ece-4d93-bf1a-e632991f1edb 192.168.10.0/24 |
+| de7c6e50-d9ec-483a-8d0b-a0a39527f37b | ext_net | cbb60e9b-b27e-40e3-9cda-a80971c2dfa0 192.168.2.229/24 |
+| ff65edfa-c5a5-4673-af69-32357e554887 | core | 88b629ed-b476-4f24-bb79-48f43059dddc 10.0.0.0/8 |
++--------------------------------------+-----------------+-------------------------------------------------------+
+(quantum) net-show btfg-net-vlan30
++---------------------------+--------------------------------------+
+| Field | Value |
++---------------------------+--------------------------------------+
+| admin_state_up | True |
+| id | 7329681a-32e4-4676-8ced-a63a910aa81b |
+| name | btfg-net-vlan30 |
+| provider:network_type | vlan |
+| provider:physical_network | physnet1 |
+| provider:segmentation_id | 30 |
+| router:external | False |
+| shared | True |
+| status | ACTIVE |
+| subnets | c1331e79-8ece-4d93-bf1a-e632991f1edb |
+| tenant_id | c4832efd900b47e78bdca6cc5b56a47f |
++---------------------------+--------------------------------------+
+(quantum) net-show core
++---------------------------+--------------------------------------+
+| Field | Value |
++---------------------------+--------------------------------------+
+| admin_state_up | True |
+| id | ff65edfa-c5a5-4673-af69-32357e554887 |
+| name | core |
+| provider:network_type | gre |
+| provider:physical_network | |
+| provider:segmentation_id | 1 |
+| router:external | False |
+| shared | False |
+| status | ACTIVE |
+| subnets | 88b629ed-b476-4f24-bb79-48f43059dddc |
+| tenant_id | c4832efd900b47e78bdca6cc5b56a47f |
++---------------------------+--------------------------------------+
+(quantum) exit
+```
+Check that our instance is up and running and attached to both networks</p>
+
+<p><code>bash
+root@supermicro:~# source creds-bt
+root@supermicro:~# nova list
++--------------------------------------+---------+--------+-----------------------------------------------+
+| ID | Name | Status | Networks |
++--------------------------------------+---------+--------+-----------------------------------------------+
+| 32054608-8567-4d70-89e1-dca48b2804c7 | windows | ACTIVE | core=10.0.0.2; btfg-net-vlan30=192.168.10.230 |
++--------------------------------------+---------+--------+-----------------------------------------------+
+root@supermicro:~#
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>
