@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenStack | Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T08:40:17+00:00</updated>
+  <updated>2013-04-29T09:06:18+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -18,9 +18,10 @@
     <link href="http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together/"/>
     <updated>2013-04-29T07:50:00+00:00</updated>
     <id>http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together</id>
-    <content type="html"><![CDATA[<p>I've spent alot of time getting both gre and vlan tag support working at the same time. I think it would be worth adding to your grizzly howtos as I've don't all my testing based off your install how-tos, anyways see below:</p>
+    <content type="html"><![CDATA[<p><img class="centre" src="/images/gre-vlan-ovs.png" title="Network topology" alt="network topology diagram">
+I've spent alot of time getting both gre and vlan tag support working at the same time.</p>
 
-<p>Best of both worlds, GRE network with option for vlan tag</p>
+<p>Best of both worlds, <code>GRE</code> network with option for <code>VLAN</code> <code>Provider Networks</code></p>
 
 <p>```bash
 root@supermicro:~# cat /etc/quantum/plugins/openvswitch/ovs_quantum_plugin.ini | grep -v #
@@ -48,7 +49,7 @@ polling_interval = 2</p>
 <!-- more -->
 
 
-<p>now create the vlan provider network as admin and assign to tenant
+<p>Create the <code>VLAN</code> <code>Provider Networks</code> as admin and assign to tenant
 <code>bash
 root@supermicro:~# quantum net-create --tenant-id 19f73304c78e4fdd8787dd6b4b4fe263 blade-net-vlan30 --provider:network_type vlan --provider:physical_network physnet1 --provider:segmentation_id 30 --shared
 Created a new network:

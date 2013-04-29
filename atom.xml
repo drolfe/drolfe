@@ -4,7 +4,7 @@
   <title><![CDATA[Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T08:40:17+00:00</updated>
+  <updated>2013-04-29T09:06:18+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -18,9 +18,10 @@
     <link href="http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together/"/>
     <updated>2013-04-29T07:50:00+00:00</updated>
     <id>http://drolfe.github.io/drolfe/blog/2013/04/29/openstack-grizzly-gre-plus-vlan-together</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve spent alot of time getting both gre and vlan tag support working at the same time. I think it would be worth adding to your grizzly howtos as I&#8217;ve don&#8217;t all my testing based off your install how-tos, anyways see below:</p>
+    <content type="html"><![CDATA[<p><img class="centre" src="http://drolfe.github.io/drolfe/images/gre-vlan-ovs.png" title="Network topology" alt="network topology diagram">
+I&#8217;ve spent alot of time getting both gre and vlan tag support working at the same time.</p>
 
-<p>Best of both worlds, GRE network with option for vlan tag</p>
+<p>Best of both worlds, <code>GRE</code> network with option for <code>VLAN</code> <code>Provider Networks</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -68,7 +69,7 @@
 <!-- more -->
 
 
-<p>now create the vlan provider network as admin and assign to tenant</p>
+<p>Create the <code>VLAN</code> <code>Provider Networks</code> as admin and assign to tenant</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -248,7 +249,7 @@ Check we have a vlan network and a gre network</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>This is a <code>test</code></p>
+<p>[This] is <code>daniel</code> a <code>test</code></p>
 ]]></content>
   </entry>
   
