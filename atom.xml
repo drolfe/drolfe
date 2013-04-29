@@ -4,7 +4,7 @@
   <title><![CDATA[Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T08:37:17+00:00</updated>
+  <updated>2013-04-29T08:40:17+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -63,6 +63,9 @@
 </span><span class='line'>
 </span><span class='line'><span class="o">[</span>SECURITYGROUP<span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
 
 
 <p>now create the vlan provider network as admin and assign to tenant</p>
