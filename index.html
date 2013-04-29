@@ -100,49 +100,6 @@ I&#8217;ve spent alot of time getting both gre and vlan tag support working at t
 
 <p>Best of both worlds, <code>GRE</code> network with option for <code>VLAN</code> <code>Provider Networks</code></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>root@supermicro:~# cat /etc/quantum/plugins/openvswitch/ovs_quantum_plugin.ini | grep -v <span class="c">#</span>
-</span><span class='line'><span class="o">[</span>DATABASE<span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">sql_connection</span> <span class="o">=</span> mysql://quantumUser:quantumPass@192.168.10.118/quantum
-</span><span class='line'><span class="nv">reconnect_interval</span> <span class="o">=</span> 2
-</span><span class='line'>
-</span><span class='line'><span class="o">[</span>OVS<span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">tenant_network_type</span> <span class="o">=</span> gre
-</span><span class='line'><span class="nv">network_vlan_ranges</span> <span class="o">=</span> physnet1:2:4094
-</span><span class='line'><span class="nv">bridge_mappings</span> <span class="o">=</span> physnet1:br-eth3
-</span><span class='line'><span class="nv">enable_tunneling</span> <span class="o">=</span> True
-</span><span class='line'><span class="nv">tunnel_id_ranges</span> <span class="o">=</span> 1:1000
-</span><span class='line'><span class="nv">tunnel_bridge</span> <span class="o">=</span> br-tun
-</span><span class='line'><span class="nv">local_ip</span> <span class="o">=</span> 192.168.10.118
-</span><span class='line'>
-</span><span class='line'><span class="o">[</span>AGENT<span class="o">]</span>
-</span><span class='line'><span class="nv">polling_interval</span> <span class="o">=</span> 2
-</span><span class='line'>
-</span><span class='line'><span class="o">[</span>SECURITYGROUP<span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
 </div>
   
   

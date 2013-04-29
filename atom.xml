@@ -4,7 +4,7 @@
   <title><![CDATA[Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T09:06:18+00:00</updated>
+  <updated>2013-04-29T09:10:45+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -22,6 +22,9 @@
 I&#8217;ve spent alot of time getting both gre and vlan tag support working at the same time.</p>
 
 <p>Best of both worlds, <code>GRE</code> network with option for <code>VLAN</code> <code>Provider Networks</code></p>
+
+<!-- more -->
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -66,9 +69,6 @@ I&#8217;ve spent alot of time getting both gre and vlan tag support working at t
 </span></code></pre></td></tr></table></div></figure>
 
 
-<!-- more -->
-
-
 <p>Create the <code>VLAN</code> <code>Provider Networks</code> as admin and assign to tenant</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -109,7 +109,7 @@ I&#8217;ve spent alot of time getting both gre and vlan tag support working at t
 
 
 <p>`
-Check we have a vlan network and a gre network</p>
+Check we have a <code>VLAN</code> network and a <code>GRE</code> network</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

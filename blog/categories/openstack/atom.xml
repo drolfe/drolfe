@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenStack | Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T09:06:18+00:00</updated>
+  <updated>2013-04-29T09:10:45+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -22,6 +22,9 @@
 I've spent alot of time getting both gre and vlan tag support working at the same time.</p>
 
 <p>Best of both worlds, <code>GRE</code> network with option for <code>VLAN</code> <code>Provider Networks</code></p>
+
+<!-- more -->
+
 
 <p>```bash
 root@supermicro:~# cat /etc/quantum/plugins/openvswitch/ovs_quantum_plugin.ini | grep -v #
@@ -44,13 +47,9 @@ local_ip = 192.168.10.118</p>
 polling_interval = 2</p>
 
 <p>[SECURITYGROUP]
-```</p>
-
-<!-- more -->
-
-
-<p>Create the <code>VLAN</code> <code>Provider Networks</code> as admin and assign to tenant
-<code>bash
+<code>
+Create the</code>VLAN<code></code>Provider Networks<code>as admin and assign to tenant
+</code>bash
 root@supermicro:~# quantum net-create --tenant-id 19f73304c78e4fdd8787dd6b4b4fe263 blade-net-vlan30 --provider:network_type vlan --provider:physical_network physnet1 --provider:segmentation_id 30 --shared
 Created a new network:
 +---------------------------+--------------------------------------+
@@ -68,8 +67,8 @@ Created a new network:
 | subnets | |
 | tenant_id | 19f73304c78e4fdd8787dd6b4b4fe263 |
 +---------------------------+--------------------------------------+
-````
-Check we have a vlan network and a gre network
+<code>`
+Check we have a</code>VLAN<code>network and a</code>GRE<code>network
 </code>bash
 root@supermicro:~# quantum
 (quantum)
