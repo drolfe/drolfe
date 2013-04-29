@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Test Blog]]></title>
+  <title><![CDATA[Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T07:41:42+00:00</updated>
+  <updated>2013-04-29T07:44:08+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
