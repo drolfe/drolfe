@@ -4,7 +4,7 @@
   <title><![CDATA[Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-29T08:31:44+00:00</updated>
+  <updated>2013-04-29T08:33:05+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -245,10 +245,7 @@ Check we have a vlan network and a gre network</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-
-<blockquote><p>You’ll notice there are two entries for source; one after author, and one after link. If you are citing from a printed work or a speech or something you cannot link to, use the first method Author&#8217;s Name, Cited Work. If you’re going to link to the work, omit the first source method, and add a source title after the link Author&#8217;s Name http://source.com Article title.</p><footer><strong>[author[</strong> <cite>Source]] [Link] [Source_link_title]</cite></footer></blockquote>
-
+<p>This is a [test]</p>
 ]]></content>
   </entry>
   
