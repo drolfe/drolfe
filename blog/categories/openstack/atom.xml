@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenStack | Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-04-30T12:19:53+00:00</updated>
+  <updated>2013-05-01T06:12:06+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -12,6 +12,261 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Troubleshoot Cinder Volumes]]></title>
+    <link href="http://drolfe.github.io/drolfe/blog/2013/05/01/troubleshoot-cinder-volumes/"/>
+    <updated>2013-05-01T06:09:00+00:00</updated>
+    <id>http://drolfe.github.io/drolfe/blog/2013/05/01/troubleshoot-cinder-volumes</id>
+    <content type="html"><![CDATA[<p>Recently I've seen a few people online having issues with cinder-volume and when I've tried to help them they really don't understand the underlying technollogy behind attaching volumes to Openstack instance. In oder to effectivily debug cinder volumes you need at least a basic understanding of:</p>
+
+<ul>
+<li>LVM
+
+<ul>
+<li>ISCSI</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<h4>LVM</h4>
+
+<p>The node running cinder-volume service need to have a LVM Volume Group called cinder-volumes. To check if you have this setup:</p>
+
+<p>```bash
+root@supermicro:~# vgdisplay
+  --- Volume group ---
+  VG Name               cinder-volumes
+  System ID           <br/>
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  11
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               100.00 GiB
+  PE Size               4.00 MiB
+  Total PE              25599
+  Alloc PE / Size       0 / 0 <br/>
+  Free  PE / Size       25599 / 100.00 GiB
+  VG UUID               F6f8iZ-IPHd-Nwkn-W9Vj-Kss5-7AFN-sAzVi2</p>
+
+<p>root@supermicro:~#
+```</p>
+
+<p>You should also confirm that you don't have any Logical Volumes in the Volume Group:</p>
+
+<p>```bash
+root@supermicro:~# lvdisplay
+root@supermicro:~#</p>
+
+<h2>```</h2>
+
+<h4>ISCSI</h4>
+
+<p>This is the more interesting part, now in order your Openstack instance to be able to attach volumes the Nova-Compute node need to be able to connect to the ISCSI server running on the Cinder-Volumes node.</p>
+
+<p>First let's check if an ISCSI target service is running on the Cinder-Volume node:</p>
+
+<p><code>bash
+root@supermicro:~# netstat -nultp | grep 3260
+tcp        0      0 0.0.0.0:3260            0.0.0.0:*               LISTEN      5183/ietd       
+tcp6       0      0 :::3260                 :::*                    LISTEN      5183/ietd       
+root@supermicro:~#
+</code></p>
+
+<p>Then from the Nova-Compute node you should at least be able to telnet to 3260:</p>
+
+<p><code>bash
+root@supermicro:~# telnet 192.168.10.118 3260
+Trying 192.168.10.118...
+Connected to 192.168.10.118.
+Escape character is '^]'.
+^]quit
+telnet&gt; quit
+Connection closed.
+root@supermicro:~#
+</code></p>
+
+<p>You can futher debug ISCSI by using the open-iscsi client, iscsiadm</p>
+
+<p>First lets start by seeing if there is cinder-volumes being offered to the Nova-Compute node as ISCSI targets:</p>
+
+<p><code>bash
+root@supermicro:~# iscsiadm -m discovery -t sendtargets -p 192.168.10.118
+root@supermicro:~#
+</code>
+Nothing is shown as we don't have any cinder-volumes created:</p>
+
+<p>```bash
+root@supermicro:~# cinder list</p>
+
+<p>root@supermicro:~#</p>
+
+<h2>```</h2>
+
+<h4>What should hapen when creating volumes</h4>
+
+<p>Now we will create a cinder volume and check to see what actually happens:</p>
+
+<p>```bash
+root@supermicro:~# cinder create --display-name test-vol 1
++---------------------+--------------------------------------+
+|       Property      |                Value                 |
++---------------------+--------------------------------------+
+|     attachments     |                  []                  |
+|  availability_zone  |                 nova                 |
+|       bootable      |                false                 |
+|      created_at     |      2013-05-01T04:37:28.357229      |
+| display_description |                 None                 |
+|     display_name    |               test-vol               |
+|          id         | ccc7ef73-0f03-46a2-9908-06515c6c9f80 |
+|       metadata      |                  {}                  |
+|         size        |                  1                   |
+|     snapshot_id     |                 None                 |
+|     source_volid    |                 None                 |
+|        status       |               creating               |
+|     volume_type     |                 None                 |
++---------------------+--------------------------------------+
+root@supermicro:~#</p>
+
+<p>root@supermicro:~# cinder list
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+|                  ID                  |   Status  | Display Name | Size | Volume Type | Bootable | Attached to |
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+| ccc7ef73-0f03-46a2-9908-06515c6c9f80 | available |   test-vol   |  1   |     None    |  false   |             |
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+root@supermicro:~#
+```</p>
+
+<p>You should also see in the cinder-volume.log that is was created:</p>
+
+<p>```bash
+grep -i cinder.api.v1.volumes /var/log/cinder/cinder-api.log
+2013-05-01 14:37:28    AUDIT [cinder.api.v1.volumes] Create volume of 1 GB
+2013-05-01 14:37:28    AUDIT [cinder.api.v1.volumes] vol={'volume_metadata': [], 'availability_zone': 'nova', 'terminated_at': None, 'updated_at': None, 'snapshot_id': None, 'ec2_id': None, 'mountpoint': None, 'deleted_at': None, 'id': 'ccc7ef73-0f03-46a2-9908-06515c6c9f80', 'size': 1, 'user_id': u'88f92da4c25f4e9898c9c7693286091f', 'attach_time': None, 'display_description': None, 'project_id': u'c4832efd900b47e78bdca6cc5b56a47f', 'launched_at': None, 'scheduled_at': None, 'status': 'creating', 'volume_type_id': None, 'deleted': False, 'provider_location': None, 'host': None, 'source_volid': None, 'provider_auth': None, 'display_name': u'test-vol', 'instance_uuid': None, 'created_at': datetime.datetime(2013, 5, 1, 4, 37, 28, 357229), 'attach_status': 'detached', 'volume_type': None, 'metadata': {}}
+root@supermicro:~#</p>
+
+<p>root@supermicro:~# grep -i volume- /var/log/cinder/cinder-volume.log
+2013-05-01 14:37:28     INFO [cinder.volume.manager] volume volume-ccc7ef73-0f03-46a2-9908-06515c6c9f80: creating
+2013-05-01 14:37:28     INFO [cinder.volume.manager] volume volume-ccc7ef73-0f03-46a2-9908-06515c6c9f80: created successfully
+root@supermicro:~#
+```
+This should have created a new LVM Logical Volume in our cinder-volumes Volume Group let check:</p>
+
+<p>```bash
+root@supermicro:~# lvdisplay
+  --- Logical volume ---
+  LV Name                /dev/cinder-volumes/volume-ccc7ef73-0f03-46a2-9908-06515c6c9f80
+  VG Name                cinder-volumes
+  LV UUID                ywroj3-eBvq-DtHv-7m5m-5s4m-1gva-SduJ7p
+  LV Write Access        read/write
+  LV Status              available
+  # open                 1
+  LV Size                1.00 GiB
+  Current LE             256
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           252:0</p>
+
+<p>root@supermicro:~#
+```</p>
+
+<p>Now from the Nova-compute node we should be able to see this 1G logical volume being offered as an ISCSI target:</p>
+
+<p>```bash
+root@supermicro:~# iscsiadm -m discovery -t sendtargets -p 192.168.10.118
+192.168.10.118:3260,1 iqn.2010-10.org.openstack:volume-ccc7ef73-0f03-46a2-9908-06515c6c9f80
+root@supermicro:~#</p>
+
+<h2>```</h2>
+
+<h4>What should hapen when attaching volumes</h4>
+
+<p>Now attached the volume</p>
+
+<p>```bash
+root@supermicro:~# cinder list
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+|                  ID                  |   Status  | Display Name | Size | Volume Type | Bootable | Attached to |
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+| ccc7ef73-0f03-46a2-9908-06515c6c9f80 | available |   test-vol   |  1   |     None    |  false   |             |
++--------------------------------------+-----------+--------------+------+-------------+----------+-------------+
+root@supermicro:~#</p>
+
+<p>root@supermicro:~# nova list
++--------------------------------------+----------------------+--------+-------------------------------------------------------------------+
+| ID                                   | Name                 | Status | Networks                                                          |
++--------------------------------------+----------------------+--------+-------------------------------------------------------------------+
+| 03ab114f-67a6-4a67-ba3f-144ed88cd08a | Octopess-blog        | ACTIVE | GRE_Core=11.11.11.4                                             <br/>
+| 141c79b9-5969-4e41-a1d5-85de7a67efc4 | cinder-iscsi-testing | ACTIVE | GRE_Core=11.11.11.5                                               |
++--------------------------------------+----------------------+--------+-------------------------------------------------------------------+
+root@supermicro:~# nova volume-attach 141c79b9-5969-4e41-a1d5-85de7a67efc4 ccc7ef73-0f03-46a2-9908-06515c6c9f80 auto
++----------+--------------------------------------+
+| Property | Value                                |
++----------+--------------------------------------+
+| device   | /dev/vdb                             |
+| serverId | 141c79b9-5969-4e41-a1d5-85de7a67efc4 |
+| id       | ccc7ef73-0f03-46a2-9908-06515c6c9f80 |
+| volumeId | ccc7ef73-0f03-46a2-9908-06515c6c9f80 |
++----------+--------------------------------------+
+root@supermicro:~#</p>
+
+<p>root@supermicro:~# cinder list
++--------------------------------------+--------+--------------+------+-------------+----------+--------------------------------------+
+|                  ID                  | Status | Display Name | Size | Volume Type | Bootable |             Attached to              |
++--------------------------------------+--------+--------------+------+-------------+----------+--------------------------------------+
+| ccc7ef73-0f03-46a2-9908-06515c6c9f80 | in-use |   test-vol   |  1   |     None    |  false   | 141c79b9-5969-4e41-a1d5-85de7a67efc4 |
++--------------------------------------+--------+--------------+------+-------------+----------+--------------------------------------+
+root@supermicro:~#</p>
+
+<p>```</p>
+
+<p>You will now have an active ISCSI session</p>
+
+<p><code>bash
+root@supermicro:~# iscsiadm -m session -o show
+tcp: [1] 192.168.2.118:3260,1 iqn.2010-10.org.openstack:volume-ccc7ef73-0f03-46a2-9908-06515c6c9f80
+root@supermicro:~#
+</code></p>
+
+<p>Once logged into the vm instance you can see the volume is atatched:</p>
+
+<p>```bash
+root@cinder-iscsi-testing:~# cat /proc/partitions
+major minor  #blocks  name</p>
+
+<p> 253        0    2097152 vda
+ 253        1    2088450 vda1
+ 253       16    1048576 vdb</p>
+
+<p>root@cinder-iscsi-testing:~# ls /dev/vd*
+/dev/vda  /dev/vda1  /dev/vdb</p>
+
+<p>root@cinder-iscsi-testing:~# fdisk /dev/vdb -l</p>
+
+<p>Disk /dev/vdb: 1073 MB, 1073741824 bytes
+16 heads, 63 sectors/track, 2080 cylinders, total 2097152 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000</p>
+
+<p>Disk /dev/vdb doesn't contain a valid partition table
+root@cinder-iscsi-testing:~#
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OpenStack Grizzly Gre + Vlan together]]></title>
