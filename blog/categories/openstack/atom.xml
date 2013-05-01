@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OpenStack | Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-05-01T06:34:40+00:00</updated>
+  <updated>2013-05-01T06:38:01+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -22,7 +22,7 @@
 
 <p>Recently I've seen a few people online having issues with cinder-volume and when I've tried to help them they really don't understand the underlying technollogy behind attaching volumes to Openstack instance.</p>
 
-<p>In oder to effectively debug cinder volumes you need at least a basic understanding of <code>LVM</code> and <code>ISCSI</code></p>
+<p>To effectively debug cinder volumes you need atleast a basic understanding of <code>LVM</code> and <code>ISCSI</code></p>
 
 <!-- more -->
 
