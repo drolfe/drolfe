@@ -4,7 +4,7 @@
   <title><![CDATA[Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-05-01T06:12:06+00:00</updated>
+  <updated>2013-05-01T06:25:08+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -18,19 +18,18 @@
     <link href="http://drolfe.github.io/drolfe/blog/2013/05/01/troubleshoot-cinder-volumes/"/>
     <updated>2013-05-01T06:09:00+00:00</updated>
     <id>http://drolfe.github.io/drolfe/blog/2013/05/01/troubleshoot-cinder-volumes</id>
-    <content type="html"><![CDATA[<p>Recently I&#8217;ve seen a few people online having issues with cinder-volume and when I&#8217;ve tried to help them they really don&#8217;t understand the underlying technollogy behind attaching volumes to Openstack instance. In oder to effectivily debug cinder volumes you need at least a basic understanding of:</p>
+    <content type="html"><![CDATA[<p><img class="centre" src="http://drolfe.github.io/drolfe/images/cinder-block.jpg" title="Cinder Block Volume" alt="cinder block volume"></p>
+
+<p>Recently I&#8217;ve seen a few people online having issues with cinder-volume and when I&#8217;ve tried to help them they really don&#8217;t understand the underlying technollogy behind attaching volumes to Openstack instance. In oder to effectivily debug cinder volumes you need at least a basic understanding of:</p>
 
 <ul>
-<li>LVM
-
-<ul>
-<li>ISCSI</li>
-</ul>
-</li>
+<li><p>LVM</p></li>
+<li><p>ISCSI</p></li>
 </ul>
 
 
-<hr />
+<!-- more -->
+
 
 <h4>LVM</h4>
 
