@@ -1,0 +1,11 @@
+--2013-05-23 03:38:40--  http://wiki.southeastlinuxfest.org/images/d/dd/2012-gold-opscode.png
+Resolving wiki.southeastlinuxfest.org (wiki.southeastlinuxfest.org)... 74.207.229.180, 2600:3c02::f03c:91ff:fe96:9fb1
+Connecting to wiki.southeastlinuxfest.org (wiki.southeastlinuxfest.org)|74.207.229.180|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 33002 (32K) [image/png]
+Saving to: `2012-gold-opscode.png'
+
+100%[======================================>] 33,002       132K/s   in 0.2s    
+
+2013-05-23 03:38:41 (132 KB/s) - `2012-gold-opscode.png' saved [33002/33002]
+
