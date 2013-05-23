@@ -4,7 +4,7 @@
   <title><![CDATA[Category: chef | Octopress OpenStack Blog]]></title>
   <link href="http://drolfe.github.io/drolfe/blog/categories/chef/atom.xml" rel="self"/>
   <link href="http://drolfe.github.io/drolfe/"/>
-  <updated>2013-05-23T03:28:41+00:00</updated>
+  <updated>2013-05-23T03:32:43+00:00</updated>
   <id>http://drolfe.github.io/drolfe/</id>
   <author>
     <name><![CDATA[Daniel Rolfe]]></name>
@@ -18,7 +18,7 @@
     <link href="http://drolfe.github.io/drolfe/blog/2013/05/23/using-chef-sevrer-with-openstack/"/>
     <updated>2013-05-23T03:00:00+00:00</updated>
     <id>http://drolfe.github.io/drolfe/blog/2013/05/23/using-chef-sevrer-with-openstack</id>
-    <content type="html"><![CDATA[<p><img class="centre" src="/images/chef-logo.png" width="600" height="480" title="chef logo" alt="chef rule the cloud"></p>
+    <content type="html"><![CDATA[<p><img src="/images/chef-logo.png" width="600" height="480" title="chef logo" alt="chef rule the cloud"></p>
 
 <p>details to come..</p>
 ]]></content>
